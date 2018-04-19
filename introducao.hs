@@ -47,7 +47,12 @@ fatorial x = x * fatorial(x-1)
 -}
 
 isPrime:: Int -> Bool
-isPrime x = True
+isPrime x = [g | g <- [1..x], x`mod`g == 0]
+
+isPrime2:: [Int] -> Int -> Bool
+isPrime2 (x:xs) x | x == 1 && 
+
+
 
 {-
 - Calcula um termo da sequencia de Fibonnacci. Voce pode trabalhar com listas. 
