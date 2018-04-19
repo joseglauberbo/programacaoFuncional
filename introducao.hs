@@ -3,10 +3,18 @@
 - impl (implicacao A => B é equivalente a (not A or B)) e equiv (A <=> B é definido como A => B and B => A)
 - Procure usar casamento de padroes e reutilizar as funcoes.
 -}
- 
-xor a b = undefined
-impl a b = undefined
-equiv a b = undefined
+
+
+xor:: Bool -> Bool -> Bool 
+xor a b | a && not b = True
+		| not a && b = True
+		| otherwise = False
+
+impl:: Bool -> Bool -> Bool
+impl a b = (not a) || b
+
+equiv:: Bool -> Bool -> Bool
+equiv a b = (impl a b) && (impl b a)
 
 {-
 A funcao square esta implementada e eleva ao quadrado um determinado numero
@@ -70,5 +78,6 @@ goldbach x = undefined
 main:: IO()
 main = do
 	x <- getLine
-	let resposta = fatorial (read x)
+	y <- getLine
+	let resposta = equiv (read x) (read y)
 	print resposta
