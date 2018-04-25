@@ -18,6 +18,9 @@ somatorio a b = undefined
  - Ex: somatorio 0 1 = 1
  -     somatorio 1 3 = 6
 -}
+
+listaSomatorio a b = [g | g <- [a..b]]
+
 somatorioRec a b = undefined
 
 -- Defina a funcao que eleva um membro ao quadrado
@@ -32,10 +35,10 @@ sumSquares 1 1 = 1
 sumSquares x y = square x + square y
 
 -- Defina uma funcao de alta ordem que aceita uma função (Int -> Int) e aplica a funcao a dois numeros
-higherOrderSum f a b = undefined
+higherOrderSum f a b = f a b
 
 -- Defina a soma dos auqdrados em termos de higherOrderSum
-hoSumSquares = undefined
+hoSumSquares a b = higherOrderSum sumSquares a b 
 
 --Implemente a funcao mapFilter que primeiro aplica o map de uma funcao f a uma lista e depois aplica a funcao filter
 -- a lista resultante. Procure usar a composicao de funcoes
@@ -46,5 +49,5 @@ main:: IO()
 main = do
 	x <- getLine
 	y <- getLine
-	let resposta = sumSquares (read x) (read y)
+	let resposta = listaSomatorio (read x) (read y)
 	print resposta
