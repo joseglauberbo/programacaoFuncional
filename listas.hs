@@ -1,38 +1,56 @@
 {-
 - Encontra o ultimo elemento de uma lista. Caso a lista seja vazia retorne o seguinte comando: error "Lista vazia!" 
 -}
-meuLast xs = undefined
+
+meuLast [] = error "Lista vazia!"
+meuLast xs = last (xs)
 
 {-
 - Encontra o penultimo elemento de uma lista. Caso a lista seja vazia ou tenha apenas um elemento retorne o seguinte comando: error "Lista sem penultimo" 
 -}
-penultimo xs = undefined
+penultimo  = error "Lista sem penultimo"
+penultimo [x] = error "Lista sem penultimo"
+penultimo xs = init (last (xs))
 
 {-
 - Retorna o k-esimo (k varia de 1 ate N) elemento de uma lista. Ex: elementAt 2 [4,7,1,9] = 7
 -}
-elementAt i xs = undefined
+
+elementAt 1 xs = head xs
+elementAt i xs = elementAt (i-1) (tail xs) 
 
 {-
 - Retorna o tamanho de uma lista. 
 -}
-meuLength xs = undefined
+
+meuLength [] = 0
+meuLenth [x] = 1
+meuLength (x:xs) = 1 + meuLength xs
 
 {-
 - Retorna o inverso de uma lista. 
 -}
-meuReverso xs = undefined
+
+meuReverso [] = []
+meuReverso xs = last (xs) ++ meuReverso (init xs)
 
 {-
 - Diz se uma lista é palindrome. 
 -}
-isPalindrome xs = undefined
 
+isPalindrome [] = True
+isPalindrome [x] = True
+isPalindrome (x:xs) | x == last (xs) = isPalindrome (init (xs))
+					| otherwise = False
+
+--Consertar
 {-
 - Remove os elementos duplicados de uma lista. Ex: compress [2,5,8,2,1,8] = [2,5,8,1]
 - Voce pode usar a funcao elem de Haskell
 -}
-compress xs = undefined
+
+compress [] = []
+compress xs = let list = [g | g <- [xs], not (elem g (xs)) in compress (list)
 
 {-
 - Varre a lista da esquerda para a direita e junta os elementos iguais. Ex: compact [2,5,8,2,1,8] = [2,2,5,8,8,1]
