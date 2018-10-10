@@ -68,10 +68,10 @@ mdc x y = undefined
 mmc x y = undefined
 
 {-
-- Determina se dois numeros inteiros positivos sao co-primos. Dois numeros sao co-primos se 
+- Determina se um numero inteiro positivo e uma lista possuem co-primos. Dois numeros sao co-primos se 
 - o mdc deles for igual a 1. Ex: coprimo 35 64 = True 
 -}
-coprimo x y = undefined
+coprime a (b:bs) = (coprime a b) && (coprime a bs)
 
 {-
 - Calcula a conjectura de Goldbach, que diz que um numero par maior que 2 pode ser escrito como a soma de dois numeros primos. Ex: 28 = 5 + 23.
